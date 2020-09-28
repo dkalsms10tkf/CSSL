@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator02.html</title>
+    <script>
+        document.write('<h2>산술 연산자</h2>');
+        document.write('3 % 5 * 2 + 10/5는 '+(3 % 5 * 2 + 10/5));
+        document.write('<br/> 5/3은 ' + 5/3);
+        if(1){} // true
+        if(-1){} //true
+        if(0){} // false
+        document.write('<h2>비교 연산자</h2>');
+        document.write('가나다' >= '가다나'); // 나랑 다랑 비교
+        document.write('<br/>');
+        document.write("==으로 비교: ",3 > 9 == 0); //false == false -> true
+        document.write("<br/>===으로 비교: ",3 > 9 === 0);
+        if(null == false) { // 자료형 다르면 
+            document.write('<br/> null === false 는 참이다.');
+        } else {
+            document.write('<br/> null === false는 거짓이다.');
+        }
+        if(null) {
+            document.write('<br/>null은 참이다.');
+        } else {
+            document.write('<br/>null은 거짓이다.');
+        } document.write('<br/>');
+        document.write((0=='0')+'<br/>'); // true 
+        document.write((0==='0')+'<br/>'); // false 타입 불일치 시 false반환
+        document.write((false == '0')+'<br/>'); //true
+        document.write((false === '0')+'<br/>'); //false
+        document.write('<h2>논리 연산자</h2>');
+        document.write(3>2 || 5 <= 10 && !(3-4)); // true || true && false -> true || false -> true
+        document.write('<h2>증감 연산자</h2>');
+        num = 10; // 암묵적 선언으로 에러는 안나는데 권장하진 않음
+        document.write(num++); // 10
+        document.write('<h2>단축 연산자</h2>');
+        document.write(num %= 5);
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
