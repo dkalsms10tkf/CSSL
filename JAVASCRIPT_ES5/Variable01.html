@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variable01.html</title>
+    <script>
+        var num;
+        let _let;
+        document.write('<h2>초기화 전</h2>');
+        document.write('num의 자료형', typeof num, ', num에 저장된 값: ', num, '<br>');
+        document.write('let의 자료형: ',typeof _let, ', let에 저장된 값: ', _let);
+        num = 100; _let = 10;
+        document.write('<h2>초기화 후</h2>');
+        document.write('num의 자료형', typeof num, ', num에 저장된 값: ', num, '<br>');
+        document.write('let의 자료형: ',typeof _let, ', let에 저장된 값: ', _let, '<br>');
+        num = 3.14;
+        document.write('num의 자료형', typeof num, ', num에 저장된 값: ', num, '<br>');
+        num = true;
+        document.write('num의 자료형', typeof num, ', num에 저장된 값: ', num, '<br>');
+        num = 'wassup';
+        document.write('num의 자료형', typeof num, ', num에 저장된 값: ', num, '<br>');
+        document.write('<h2>변수 선언과 동시에 초기화</h2>');
+        var str = "isn't she lovely";
+        document.write('num의 자료형', typeof str, ', num에 저장된 값: ', str, '<br>');
+        document.write('<h2>,(콤마)로 구분해서 동시에 변수 여러개 선언</h2>');
+        var num1=10, num2, str1='w', str2;
+        document.write(num1 + num2 +'<br/>'); //NaN (Not a Number), number타입
+        if(isNaN(num1+num2)) document.write('NaN이다.<br/>');
+        else document.write('NaN이 아니다.<br/>');
+        document.write(str1 + str2 + '<br/>'); //wundefined
+        document.write(typeof(str1+str2)); // string
+        document.write('<h2>기타 자료형</h2>');
+        var date = new Date();// 생성자 함수
+        document.write(date, ' ', typeof date, '<br/>'); // object
+        var nullvar = null;
+        document.write(nullvar, ' ', typeof nullvar, '<br/>');
+        var obj = {}; //리터럴 객체
+        document.write(obj, ' ', typeof obj, '<br/>'); //obj 주소값 들어가있음
+        console.log(obj, ' ', typeof obj); 
+        obj.name = '가길동';
+        obj.age = 20;
+        obj.walk = function() {
+            document.write(this.name+'가(이) 걷다. <br/>'); // this = obj
+        };
+        document.write('이름: ' + obj.name + ', 나이: ' + obj.age+'<br/>');
+        obj.walk();
+        var obj2 = {id: 'kim', pwd:'1234', name : '나길동', eat : function(food) {
+            document.write(this.id + '가(이) '+ food +'를(을) 먹다. <br/>');
+        }};
+        
+        obj2.toString = function() {
+            return '[아이디:'+ this.id +',비번:' + this.pwd + ',이름:' + this.name+']<br/>';
+        }; // toString 오버라이딩
+        document.write(obj2, ' ', typeof obj2, '<br/>');
+        //오버라이딩 후 obj2에는 값이 들어가있음
+        console.log(obj2, ' ', typeof obj2);
+        obj2.eat('pizza');
+        const PI = 3.14; // 상수 재선언, 재할당 안됨
+        var f = function(a,b) { //인자 타입 지정 안함
+            return a+b;
+        };
+        document.write('f의 자료형은 ' + typeof f);
+        alert(f(10,5));
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
