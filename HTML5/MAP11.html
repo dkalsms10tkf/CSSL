@@ -7,11 +7,15 @@
 </head>
 <body>
     <!--
+        img태그
+        <img 속성>
+        - usemap: 이미지를 분할해서 사용하려면 이 속성 부여해야 함
+          ex) usemap="#A"
         map태그: 이미지 영역 분할해서 마치 지도처럼 사용하기 위함
         <MAP 속성>
         - name: img태그의 usemap속성에 지정한 값(#빼고)
-        
-        area태그: map속성안에서 이미지 분할할떄 사용
+          ex) name="A"
+        area태그: map속성안에서 이미지 분할할때 사용
         <AREA 속성>
         - href
         - shape: circle, rectangle, polygon(분할할 모양설정)
@@ -25,7 +29,7 @@
     <map name="korea">
         <area shape="rect" coords="246,343,305,327" href="http://www.busan.go.kr" alt="부산">
         <area shape="circle" coords="128,123,13" href="http://www.seoul.go.kr" alt="서울">
-        <area shape="poly" coords="" href="http://www.jeju.go.kr" alt="제주도">
+        <area shape="poly" coords="60,455,98,434,129,444,123,464,76,475" href="http://www.jeju.go.kr" alt="제주도">
     </map>
 </body>
 </html>
