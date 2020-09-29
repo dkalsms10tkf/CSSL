@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMG10.html</title>
+</head>
+<body>
+    <!--
+        img태그 : 종료태그가 없다.
+        <속성>
+            src: 경로
+            alt: 대체 텍스트
+            width: 단위 생략 가능
+            height: 단위 생략 가능
+        - a태그로 이미지에 링크걸때 반드시 border값을 0으로 준다.
+    -->
+            <h2>img태그</h2>
+            <h3>이미지 원본 크기대로 표시</h3>
+            <img src="../IMGS/java-logo.jpg" alt="이미지를 표시할 수 없습니다">
+            <h3>이미지 원본 크기 조정 - 태그 속성으로 크기 설정시 단위 생략 가능</h3>
+            <img src="../IMGS/java-logo.jpg" alt="이미지를 표시할 수 없습니다" width="210" height="140">
+            <h3>이미지 원본 크기 조정 - style속성으로 크기 설정시 단위 필수</h3>
+            <img src="../IMGS/java-logo.jpg" alt="이미지를 표시할 수 없습니다" style="width: 210px;">
+            <h3>이미지에 링크 걸기</h3>
+            <a href="https://www.nate.com">
+                <img src="../IMGS/java-logo.jpg" alt="이미지를 표시할 수 없습니다" style="width: 100px;">
+            </a>
+            
+</body>
+</html>
