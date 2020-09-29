@@ -60,20 +60,28 @@
             document.write('<li>arrNoSize['+i+']='+arrNoSize[i]+'</li>');
         }
         document.write('</ul>');
-        function getAverage() {
-            var text = document.getElementById('students');
-            alert(text.value);        
-        }
+        
     </script>
 </head>
 <body>
     <fieldset>
         <legend>학생의 평균 구하기</legend>
-        학생 수 입력 : <input type="text" id="students" value="와우"/>
+        학생 수 입력 : <input type="text" id="students"/>
         <button onclick=getAverage()>평균 구하기</button>
         <script>
             //배열 선언
             var score =[];
+            function getAverage() {
+                var textBox = document.getElementById('students');
+                console.log('입력값:%s, textBox.value의 자료형:%s',textBox.value, typeof textBox.value);
+                var total=0;
+                for(var i=0; i< parseInt(textBox.value);i++){
+                    score[i] = parseInt(prompt(i+1+'번째 점수입력?')); //웹에서 이거 안씀
+                    total += score[i];
+                }
+                var average = total/score.length;
+                console.log('총점: %d, 평균: %d', total, average);
+            }
         </script>
     </fieldset>
 </body>
