@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ULOL08.html</title>
+</head>
+<body>
+    <!--
+        ul태그: Unordered List
+            - block element
+            - 순서가 없는 목록 나타낼 때 사용하는 태그
+            - 하위요소로 li태그를 가짐
+            <속성>
+            - disc(동그라미) square(네모), circle(빈 동그라미)
+            - type:1이나 A,a, 로마숫자 쓰면 순서 부여 가능
+        ol태그: Ordered List
+            - 하위요소로 li태그를 가짐
+            <속성>
+            - type:1(default) type:A,a,로마숫자 가능
+            - start: 순서 시작값 지정
+    -->
+    <div>
+        <!--
+        <ul type="circle"> 웹표준에 어긋남-->
+        <ul style="list-style-type: square; background-color: yellow;">
+            <li style="background-color: tomato;">농구</li>
+            <li>축구</li>
+            <li>야구</li>
+        </ul>
+        <h2>당신이 좋아하는 영화는?</h2>
+        <ul style="list-style: upper-alpha;">
+            <li>액션</li>
+            <li>SF</li>
+            <li>스펙터클</li>
+            <li>범죄/스릴러</li>
+        </ul>
+        <h2>당신이 좋아하는 영화장르는?</h2>
+        <ol style="list-style: lower-alpha;" start="5">
+            <li>액션</li>
+            <li>SF</li>
+            <li>스펙터클</li>
+            <li>범죄/스릴러</li>
+        </ol>
+        <h2>UL로 메뉴 구현</h2>
+        <ul>
+            <li>회사 소개</li>
+            <li>인재 채용</li>
+            <li>제휴 제안</li>
+            <li>이용 약관</li>
+            <li>개인정보처리지침</li>
+        </ul>
+    </div>
+</body>
+</html>
