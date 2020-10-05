@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch05.html</title>
+    <!--
+        Switch문
+        java와 javascript와 차이
+        java는 Switch문 식에 정수값, 문자열이어야 함(long x)
+        javascript는 다 됨
+    -->
+    <script>
+        const PI=3.000014;
+        switch(PI) {
+            case 3.0000000014 :
+            case 3.00000014 : 
+            case 3.0000014 : 
+            case 3.000014 : 
+            case 3.14 : document.write('PI는 3.14이다. <br>'); break;
+            default: document.write('PI는 3.14가 아니다. <br>');
+        }
+        switch(10%2==0) //true false올 수 있음
+        {
+            case true: document.write('true다. <br>'); break;
+            case false: document.write('false다 <br>');
+        }
+        switch('자바') {
+            case '자스': document.write('javascript이다. <br>'); break;
+            case '자바': document.write('java이다. <br>')
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

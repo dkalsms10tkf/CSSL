@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function08_2.html</title>
+    <script>
+        // 브라우저 상 최상위 객체는 window 객체이다.
+        var param = 100, args=1; // script에서 변수선언하면 window의 속성이된다.
+        function callByValue(param, args) { // 여기서 선언한 param,args는 지역변수
+            var temp = param;
+            param = args;
+            args = temp;
+            console.log('callByValue 함수 안: param-%s,args-%s',param, args);
+        };
+        //console.log(window.param);
+        callByValue(param,args);
+        console.log('callByValue 함수 밖: param-%s,args-%s',param, args);
+        var array = [100,1];
+        var callByRef = function(arr) {
+            var temp = arr[0];
+            arr[0] = arr[1];
+            arr[1] = temp;
+            console.log('callByRef 함수 안: arr[0]-%s,arr[1]-%s',arr[0], arr[1]);
+        };
+        callByRef(array);
+        //둘다 바뀌어 있음
+        console.log('callByRef 함수 밖: array[0]-%s,array[1]-%s',array[0], array[1]);
+        // 지역변수 전역변수 충돌시 지역변수 우선
+        var mVar = 100; //전역
+        function comflict(mVar) { //지역
+            console.log(this); //이때 this는 window를 가리킨다.
+            //this를 포함하는 부분을 호출하는 객체가 this이다.
+            //mVar = mVar*2; //지역변수를 바꾼다.
+            this.mVar = mVar*2; //전역변수를 바꾼다.
+            console.log('함수안 mVar: ',mVar);    
+        }
+        comflict(mVar);
+        console.log('함수밖 mVar: ',mVar);
+        //참조에 의한 호출 예제
+        var member = [];
+        function setMember(member) {
+            for(var i=0; i<2; i++) {
+                member.push(prompt(i+1+'번째 이름 입력?',''));
+                member.push(prompt(i+1+'번째 나이 입력?',''));
+                member.push(prompt(i+1+'번째 주소 입력?',''));
+            }
+        }
+        //setMember(member);
+        member.forEach((item)=>{
+            console.log(item);
+        });
+        //문제] 배열에 들어있는 값들을 큰값부터 재정렬하는 함수 정의하라
+        var arr=[9,45,10,23,99,222,34,100,77,88];
+        function sortArray(array) {
+            for(var i=0; i<array.length-1; i++){
+                for(var j=i+1; j<array.length; j++) {
+                    if(array[i]<array[j]){
+                        var temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+                }
+            }
+        }
+        sortArray(arr);
+        arr.forEach((item)=>{
+            console.log(item);
+        });
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

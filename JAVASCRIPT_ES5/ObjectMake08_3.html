@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ObjectMake08_3.html</title>
+    <script>
+        /*
+            객체 만드는 법
+            1. 중괄호 사용(literal 객체)
+            var 객체명 = {};
+            #객체명.속성명 = 값;
+            #객체명.함수명 = function(매개변수, ...) {}
+            2. 생성자함수 사용
+            function 생성자함수명() {
+                #this를 사용하여 속성 설정
+            }
+            함수는 #객체명.prototype.함수명 = function() {}로 별도로 정의한다.
+            생성자함수명 : 대문자로 시작 / return문 없음 / 주로 속성만 정의
+        */
+        var a = new Array(); //생성자함수
+        var brace = {};  // new Object();와 같다.
+        brace.name = '가길동';
+        brace.age = 29;
+        console.log(brace); // json형태로 나옴(javascript object notation)
+        console.log('-------속성출력-------')
+        console.log(brace.name, brace.age);
+        brace.printout = function() {
+            console.log('-----this의 타입 및 값------');
+            console.log(typeof this);
+            console.log(this);
+            console.log(this === window); // false
+            console.log('이름:' + this.name + ',나이:' + this.age);
+            //이때 this는 brace이다.
+        }
+        brace.printout();
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IF04.html</title>
+    <!--
+        java에서는 if문 안에 boolean만 가능하나
+        javascript에서는 다 가능
+        0,null,false 외엔 전부 true로 판단
+    -->
+    <script>
+        var nullvar = null, num1 = num2 = 10;
+        if(nullvar) document.write('null은 true다.<br>');
+        else document.write('null은 false다<br>');
+
+        if(num1-num2){ // java에선 이렇게 표현 안 된다.
+            document.write('num1 - num2 는 true다.<br>');
+        }
+        else document.write('num1 - num2 는 false다. <br>');
+        //아래 삼항연산식 java에선 에러난다.
+        //1. javascript에선 삼항연산식에 명령문도 쓸 수 있다.
+        num1 > num2 ? document.write('num1>num2이 참이다.<br>'): document.write('num1>num2이 거짓이다.<br>');
+        //2. java에서도 에러 안나는 방법 - 변수에 담기
+        var result = num1 > num2 ? 'num1>num2이 참이다.<br>' : 'num1>num2이 거짓이다.<br>';
+        document.write(result);
+        
+    </script>
+</head>
+<body>
+    <fieldset>
+        <legend>성적출력</legend>
+        국어 <input type="text" id="kor"/>
+        영어 <input type="text" id="eng"/>
+        수학 <input type="text" id="math"/>
+        <span id="span" style="color: red; font-weight: bold;">여기에 출력</span>
+        <button onclick="getGrade()">확인</button>
+        <script>
+            var korInput = document.getElementById('kor');
+            var engInput = document.getElementById('eng');
+            var mathInput = document.getElementById('math');
+            var span = document.getElementById('span');
+            function getGrade() {
+                var kor = parseInt(korInput.value);
+                var eng = parseInt(engInput.value);
+                var math = parseInt(mathInput.value);
+                var avg = (kor+eng+math)/3;
+                if(avg>=90) span.innerHTML = 'A학점';
+                else if(avg>=80) span.innerHTML = 'B학점';
+                else if(avg>=70) span.innerHTML = 'C학점';
+                else if(avg>=60) span.innerHTML = 'D학점';
+                else span.innerHTML = 'F학점';
+                span.innerHTML += ':'+ avg;
+            };
+        </script>
+    </fieldset>
+</body>
+</html>
