@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form13_2.html</title>
+</head>
+<body>
+    <!--
+        form 하위 태그
+        [input태그] *inline element*
+        - type: text,password,checkbox,radio, hidden(값을 웹브라우저에 안보여줌) 등등
+                submit(button모양), reset(초기화), image(이미지버튼), button(버튼모양)
+                ,file(파일찾아보기버튼)
+        - name: 
+        - value: 미리 값이 입력됨
+            * radio, checkbox에선 value 필수
+        - name: 값 전송시 구분하기 위한 이름(파라미터)
+        
+        모든 태그는 class, id, title, style 등의 속성을 갖는다.
+        id는 하나의 페이지 안에선 중복된 값을 가질 수 없다.
+    -->
+    <div>
+        <h2>form태그의 하위 태그들</h2>
+        <h3>input태그 type="text"</h3>
+        <!--
+            size: 가로 길이
+            maxlength:
+            value:
+            disabled="disabled":입력 불가
+            enabled="enabled"(default)
+        -->
+        기본 텍스트 상자: <input type="text"/><br>
+        속성 추가: <input type="text" size="10" maxlength="5" value="기본텍스트" disabled/><br>
+        주민번호: <input type="text" size="6" maxlength="6"> - <input type="text" size="7" maxlength="7"/><br>
+        홈페이지: <input type="text" value="http://"/><br>
+        <h3>input태그 type="password"</h3>
+        <!--text와 동일-->
+        기본 패스워드 상자: <input type="password"/><br>
+        패스워드 지정: <input type="password" value="1234"/><br>
+        <h3>input태그 type="checkbox"</h3>
+        <!--
+            checkbox여러개 선택시, name같게 지정, value속성에 값 미리 지정
+            value에 지정한 값이 action에 지정한 페이지로 전송됨
+            checked="checked"
+        -->
+        <fieldset>
+            <legend>당신의 관심사항은? </legend>
+            <form>
+                <input type="checkbox" name='inter' value="pol" id="pol"/><label for="pol">정치</label>
+                <!--label로 감싸면 감싼 텍스트 클릭 시 체크박스 선택 가능-->
+                <input type="checkbox" name='inter' value="eco" checked/>경제
+                <input type="checkbox" name='inter' value="ent"/>연예
+                <input type="checkbox" name='inter' value="spo" id="spo"/><label for="spo">스포츠</label>
+                <input type="submit" value="확인"/>
+            </form>
+            <!--
+                http://127.0.0.1:5500/HTML5/Form13_2.html?inter=pol&inter=eco
+            -->
+        </fieldset>
+        <h3>input태그 type="radio"</h3>
+        <!--checkbox와 동일, 하나만 선택가능, name속성에 값을 다르게 주면 여러개 선택 가능하지만
+        그렇게 잘 안 쓴다.-->
+        <fieldset>
+            <legend>당신의 성별은? </legend>
+            <form>
+                <input type="radio" name='gender' value="man" id="m"/><label for="m">남</label>
+                <input type="radio" name='gender' value="woman" checked/>여
+                <input type="radio" name='gender' value="no" id="no"/><label for="no">선택하지 않음</label>
+                <input type="submit" value="확인"/>
+            </form>
+            <!--
+                http://127.0.0.1:5500/HTML5/Form13_2.html?gender=woman
+            -->
+        </fieldset>
+        <h3>input태그 type="file"</h3>
+        <!--text와 동일
+        단, value에 값 지정해도 안보임.
+        사용자가 선택한 파일 value속성에 저장됨-->
+        기본: <input type="file"/><br>
+        속성추가: <input type="file" size="50" value="기본텍스트">
+        <!--브라우저마다 다르지만 대부분 size,value설정해도 안보임-->
+        <h3>input태그 type="hidden"</h3>
+        <!--
+            - 자주쓰임, 웹브라우저에 안보임, 값숨겨서 전송할때 사용
+            - value, name속성 반드시 필요
+            - 주로 키값을 전송할때 많이 사용
+        -->
+        <form>
+            <input type="hidden" name="no" value="110"/>
+            아이디: <input type="text" name="id">
+            이름: <input type="text" name="name">
+            <input type="submit" value="확인">
+        </form>
+        <!--
+            http://127.0.0.1:5500/HTML5/Form13_2.html
+            ?no=110&id=a&name=%EC%95%84%EB%AF%B8
+        -->
+        <h3>다양한 버튼들</h3>
+        <fieldset>
+            <legend>각종 버튼</legend>
+            <form action="https://www.naver.com">
+                아이디: <input type="text" name="id" placeholder="아이디를 입력하세요"><br>
+                성별:
+                <input type="radio" name="gender" value="man" id="man"><label for="man">남자</label>
+                <input type="radio" name="gender" value="woman" id="woman"><label for="woman">여자</label>
+                
+                <br>관심과목:
+                <input type="checkbox" name="subject" value="자바" id="java"><label for="java">자바</label>
+                <input type="checkbox" name="subject" value="html5" id="html5"><label for="html5">html5</label>
+                <input type="checkbox" name="subject" value="css3" id="css3"><label for="css3">css3</label>
+                <!--
+                    submit: 클릭시 무조건 action에 지정한 페이지나 url로 데이터 전송 및 
+                -->
+                <input type="submit" value="submit버튼">
+                <!--아무것도 선택안했을때, https://www.naver.com/?id= 이런식으로 전달됨-->
+                <!--
+                    reset: 초기화
+                -->
+                <input type="reset" value="reset버튼">
+                <!--
+                    button: 아무기능없음
+                -->
+                <input type="button" value="button버튼">
+                <!--
+                    button태그, submit기능을 함(브라우저에 따라 다르긴 하지만 요즘은 submit기능있음)
+                -->
+                <button>버튼태그</button>
+                <!--
+                    image: 이미지 버튼
+                -->
+                <input type="image" alt="이미지버튼" src="../IMGS/button.png" width="30px">
+            </form>
+        </fieldset>
+        <h3>&lt;select&gt;태그</h3>
+        <!--
+            select태그:
+        -->
+        <form>
+            <select name="grade" size="2">
+                <option value="">학력선택</option>
+                <option value="elementry">초등학교</option>
+                <option value="middle">중학교</option>
+                <option value="high" selected>고등학교</option>
+                <option value="universary">대학교</option>
+            </select>
+            <input type="submit" value="확인">
+        </form>
+        <!--
+            textarea : inline element
+        -->
+        <h3>&lt;textarea&gt;태그</h3>
+        기본: <textarea></textarea><br>
+        속성추가: <textarea cols="50" rows="10"></textarea><br>
+        기본텍스트적용: <textarea cols="30" rows="10">기본텍스트</textarea>
+    </div>
+</body>
+</html>

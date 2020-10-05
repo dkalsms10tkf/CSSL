@@ -10,7 +10,7 @@
         a태그: hyper link기능 제공하는 태그
         <속성>
             - href: url주소
-            - target: 이동한 페이지를 보여줄 대상 제정
+            - target: 이동한 페이지를 보여줄 대상 지정
                 _self: 자기 자신의 브라우저에 이동할 페이지 표시
                 _top
                 _parent
@@ -24,5 +24,16 @@
             링크거는 페이지 위치가 바뀌더라도 주소가 절대 변하지 않음
         2. 상대주소
     -->
+    <div>
+        <h2>A태그</h2>
+        <h3>_self(현재 창에 이동할 페이지의 내용을 표시:디폴트)</h3>
+        <a href="./ULOL08.html">target속성 미 지정(상대경로)-ULOL08.html</a><br/>
+        <a href="http://127.0.0.1:5500/HTML5/ULOL08.html">target속성 미 지정(절대경로-http로 시작)-ULOL08.html</a>
+        <a href="/HTML5/ULOL08.html">target속성 미 지정(절대경로-/로 시작)-ULOL08.html</a>
+        <h3>_blank(현재 창이 아닌 새로운 창(탭)에 이동할 페이지의 내용을 표시)</h3>
+        <a href='../JAVASCRIPT_ES5/Variable01.html' target="_blank">target속성 지정(상대경로)-Variable01.html</a>
+        <h3>쿼리 스트링으로 데이타 전달</h3>
+        <a href='ULOL08.html?user=kim&name=홍길동&age=20'>GET방식으로 데이타 전송</a>
+    </div>
 </body>
 </html>

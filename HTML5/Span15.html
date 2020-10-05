@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Span15.html</title>
+    <script>
+        var toggle = false;
+        function toggleText() {
+            var span = document.getElementById('text');
+            if(!toggle) {
+                span.innerHTML = '제이에스피';//시작,종료있는 태그에는 innerHTML 쓸 수 있음
+            }
+            else {
+                span.innerHTML = 'JSP';
+            }
+            toggle = !toggle;
+        };
+        function setImg() {
+            var span = document.getElementById('img');
+            span.innerHTML = '<img src="../IMGS/button.png" alt="이미지가 없습니다." width="30px"/>';
+        };
+        function setGugudan() {
+            var span = document.getElementById('gugudan');
+            var htmlString = '<table style=\'border-spacing:2px;background-color:green; width:700px; height:400px\'>';
+            for(var i=1; i<=9; i++) {
+                htmlString +='<tr style="background-color:white; text-align:center">';
+                for(var j=2; j<=9; j++) {
+                    htmlString+='<td>'+j+' * '+i + '=' + i*j + '</td>';
+                }
+                htmlString +='</tr>';
+            }
+            htmlString+='</table>';
+            span.innerHTML = htmlString;
+        };
+    </script>
+    <style>
+        .monday {
+            font-size: .8em;
+            color:  gray;
+        }
+        .html5 {
+            font-size: 1.8em;
+            font-weight: bold;
+            color:green;
+        }
+    </style>
+</head>
+<body>
+    기본 텍스트
+    <h2>h2태그</h2>
+    <span>기본 텍스트</span>
+    <!--
+        일반적인 html태그와 달리 markup기능은 없다.
+        주로 자바스크립트와 css에서 활용하기 위한 태그
+    -->
+    <h2>&lt;span&gt;태그</h2>
+    <h3>자바스크립트에서 활용</h3>
+    오늘 첫 수업은 <span id="text">JSP</span>입니다. <br>
+    여기에 <span id="img">이미지</span> 표시하기 <br>
+    아래에 구구단 표시하기 <br>
+    <span id="gugudan"></span>
+    <fieldset>
+        <legend>버튼들</legend>
+        <input type="button" value="텍스트변경" onclick="toggleText()"/>
+        <input type="button" value="이미지교체" onclick="setImg()"/>
+        <input type="button" value="구구단표시" onclick="setGugudan()"/>
+    </fieldset>
+    <h3>CSS에서 활용</h3>
+    오늘은 <span class='monday'>월요일</span>입니다. <br>
+    <span class='html5'>HTML5</span> 수업입니다. <br>
+    
+</body>
+</html>
