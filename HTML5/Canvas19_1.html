@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas19_1.html</title>
+</head>
+<body>
+    <!--inline element-->
+    <div>
+        <h2>&lt;canvas&gt;태그</h2>
+        <!--캔버스의 가로폭 세로폭은 css로 주면 안 됨, 반드시 속성으로 설정하기-->
+        <canvas style="background-color: darkkhaki;" width="400" height="400" id="canvas"></canvas>
+        <script>
+            var canvas = document.getElementById('canvas');
+            var ctx = canvas.getContext('2d');
+            ctx.beginPath();
+            ctx.moveTo(0,0);
+            ctx.lineTo(100,100);
+            ctx.stroke();
+            ctx.closePath();
+
+            ctx.beginPath();
+            ctx.lineCap='round';
+            ctx.lineWidth= 10;
+            ctx.moveTo(100,100);
+            ctx.lineTo(200,100);
+            ctx.stroke();
+            ctx.closePath();
+
+            ctx.beginPath();
+            ctx.lineWidth=5;
+            ctx.moveTo(200,100);
+            ctx.lineTo(200,200);
+            ctx.stroke();
+            ctx.closePath();
+            
+            ctx.fillStyle='rgba(50,145,200,0.5)';
+            ctx.fillRect(200,200,100,100);
+        </script>
+    </div>
+</body>
+</html>

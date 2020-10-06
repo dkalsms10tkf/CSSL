@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5_NEW20.html</title>
+</head>
+<body>
+    <fieldset>
+        <legend>HTML5에 새롭게 추가된 태그나 속성들 </legend>
+        <h2>텍스트에 하이라이트 효과를 주는 태그 mark</h2>
+        <p>
+            사법부가 오늘 발표한 바에 따르면 <mark>맥아피</mark>는 2014~2018년 사이에 <br>
+            암호화폐 홍보, 컨설팅, 강연, 다큐멘터리 제작 등으로 수천만 달러의 수익을 올렸음에도 <br>
+            이에 대한 세금을 내지 않았다고 한다. 뿐만 아니라 증권거래위원회에 의하면 <br>
+            여러 개의 ICO 토큰 판매 촉진 활동에 참가함으로써 2300만 달러의 암호화폐 자산을 대가로 받았는데,<br>
+            그러한 사실을 전혀 공개하지 않음으로써 ‘대가성 홍보’라는 사실을 사람들이 인지하지 못하도록 했다고도 한다. <br>
+        </p>
+        <h2>진행을 표시하는 태그 progress</h2>
+        <progress value="100" max="200" style="width: 300px; height: 50px;"></progress>
+        <h2>자동완성 태그 datalist</h2> <!--제이쿼리에 더 좋은거 있어서 잘 안씀-->
+        <label for="keyword">검색어를 입력하세요</label>
+        <input type="search" id="keyword" list="data_list"/>
+        <datalist id="data_list">
+            <option value="코로나"></option>
+            <option value="코로나19"></option>
+            <option value="코카콜라"></option>
+            <option value="코알라"></option>
+            <option value="HTML5"></option>
+            <option value="Hybrid"></option>
+            <option value="NAVER"></option>
+            <option value="NATE"></option>
+        </datalist>
+        <h2>이미지 그룹화 하는 태그 figure</h2>
+        <h5>img는 inline, figure는 block element</h5>
+        <figure>
+            <figcaption>자바 이미지1</figcaption>
+            <img src="../IMGS/java-logo.jpg" alt="첫번째 이미지" width="100" height="50">
+        </figure>
+        <figure>
+            <figcaption>자바 이미지2</figcaption>
+            <img src="../IMGS/java-logo.jpg" alt="첫번째 이미지" width="100" height="50">
+        </figure>
+        <h2>새롭게 추가된 속성들</h2>
+        <h3>multiple, accept 속성</h3> <!--multiple:파일여러개선택가능, accept:파일유형필터링가능-->
+        <input type="file" multiple accept="image/png, image/jpeg"/>
+        <h3>autofocus 속성</h3> <!--자동으로 포커스맞춰줌-->
+        <input type="text" autofocus/>
+        <h3>contenteditable 속성</h3> <!--텍스트 수정 가능-->
+        <p contenteditable="true">
+            사법부가 오늘 발표한 바에 따르면 <mark>맥아피</mark>는 2014~2018년 사이에 <br>
+            암호화폐 홍보, 컨설팅, 강연, 다큐멘터리 제작 등으로 수천만 달러의 수익을 올렸음에도 <br>
+            이에 대한 세금을 내지 않았다고 한다. 뿐만 아니라 증권거래위원회에 의하면 <br>
+            여러 개의 ICO 토큰 판매 촉진 활동에 참가함으로써 2300만 달러의 암호화폐 자산을 대가로 받았는데,<br>
+            그러한 사실을 전혀 공개하지 않음으로써 ‘대가성 홍보’라는 사실을 사람들이 인지하지 못하도록 했다고도 한다. <br>
+        </p>
+        <h3>hidden 속성</h3>
+        <input type="button" value="버튼" hidden>
+        <h3>required 속성</h3> <!--잘 쓰진 않음, 주로 테스트 버전에서...-->
+        <form action="https://www.nate.com">
+            <input type="text" name="name" required/>
+            남자 <input type="radio" name="gender" value="남자" required/>
+            여자 <input type="radio" name="gender" value="여자" required/>
+            동의 <input type="checkbox" name="accept" value="yes" required/>
+            <input type="submit" value="확인" />
+        </form>
+        <h3>placeholder 속성</h3>
+        아이디 <input type="text" placeholder="아이디"/>
+        비밀번호 <input type="password" placeholder="비밀번호"/>
+    </fieldset>
+</body>
+</html>

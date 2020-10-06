@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas19_3.html</title>
+    <script>
+        //body태그 안에 있는 모든 태그를 미리 load하기 위해서 쓰는 이벤트 리스너
+        window.addEventListener('load',()=>{
+            var canvas = document.getElementById('canvas');
+            var ctx = canvas.getContext('2d'); //붓
+            ctx.beginPath();
+            ctx.strokeStyle = 'red';
+            ctx.moveTo(60,313);
+            ctx.lineTo(120,166);
+            ctx.lineTo(180,76);
+            ctx.lineTo(240,256);
+            ctx.lineTo(300,70);
+            ctx.lineTo(360,200);
+            ctx.lineTo(420,120);
+            ctx.lineTo(480,70);
+            ctx.stroke();
+            ctx.closePath();
+            
+            //이미지 그리기용 - 드래그 안 됨
+            var canvasimg = document.getElementById('canvasimg');
+            ctx= canvasimg.getContext('2d');
+            var img = new Image();
+            img.src = '../IMGS/button.png';
+            img.onload = function() { //onload대신 addListener('load', f..);
+                //이미지 원본크기
+                //ctx.drawImage(img, 0,0);
+                //이미지 크기조정해서
+                ctx.drawImage(img,0,0,100,100);
+            };
+            ctx.drawImage()
+        });
+    </script>
+</head>
+<body>
+    <h2>&lt;canvas&gt;태그</h2>
+    <canvas id="canvas" width="550" height="450" style="background-color: khaki;"></canvas>
+    <canvas id="canvasimg" width="300" height="300" style="border: 1px lightcoral solid;"></canvas>
+
+</body>
+</html>

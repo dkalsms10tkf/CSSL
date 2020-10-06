@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas19_2.html</title>
+</head>
+<body>
+    <h2>&lt;canvas&gt;태그</h2>
+    <div>
+        <canvas id="canvas" width=200 height="200" style="background-color: darksalmon;">
+
+        </canvas>
+        <script>
+            var canvas = document.getElementById('canvas');
+            var ctx = canvas.getContext('2d');
+
+            ctx.font = '25 굴림체';
+            ctx.fillStyle = 'blue';
+            
+            ctx.strokeStyle = 'red'; //선색깔
+            ctx.moveTo(50,20);
+            ctx.lineTo(50,180);
+            ctx.stroke(); // 선 그러짐
+            //그림자
+            ctx.shadowColor = 'rgba(0,255,0,0.8)';
+            ctx.shadowOffsetX = 5; //글씨 기준점으로부터 X축으로 5만큼
+            ctx.shadowOffsetY = 5; //
+            ctx.shadowBlur = 5; //그림자 퍼진 정도, 최대값 100
+            ctx.textAlign = 'start';
+            ctx.fillText('HTML5_START',50,50);
+
+            ctx.textAlign = 'end';
+            ctx.fillText('HTML5_END',50,80);
+
+            ctx.textAlign = 'center';
+            ctx.fillText('HTML5_CENTER',50,110);
+
+            ctx.textAlign = 'left';
+            ctx.fillText('HTML5_LEFT',50,140);
+
+            ctx.textAlign = 'right';
+            ctx.fillText('HTML5_RIGHT',50,170);
+        </script>
+    </div>
+</body>
+</html>
