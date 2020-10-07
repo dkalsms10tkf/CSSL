@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math10.html</title>
+    <script>
+        /*
+            Math.함수명() 식으로 호출한다
+        */
+        //1. abs():절대값
+        console.log('-10의 절대값:'+Math.abs(-10));
+        //2.pow():지수
+        console.log('2의 3승:'+Math.pow(2,3));
+        //3.round():반올림-소수점 첫쨰자리에서 반올림
+        console.log('3.159반올림:'+Math.round(3.159));
+        //4.ceil():올림
+        console.log('3.159올림:'+Math.ceil(3.159));
+        //5. floor():내림
+        console.log('3.9내림:'+Math.floor(3.9));
+        //6. random(): 0.0 <= 값 < 1.0사이의 값을
+    //             랜덤하게 발생 시킴
+    /*
+    parseInt(Math.random()*범위) + 시작값
+    예]
+    1부터 5사이의 숫자를 랜덤하게 발생시키자
+    범위:5-1 = 4
+    시작값:1
+    parseInt(Math.random()*4)+1:마지막값 5는 포함 안됨
+
+    ※마지막 값을 포함하기 위해서
+    범위 + 1
+    parseInt(Math.random()*5)+1:마지막값 5도 포함됨
+    */
+
+        console.log(Math.random());
+        console.log(parseInt(Math.random()*5)+1);
+    /*
+        문]
+        1부터 45까지 숫자를 랜덤하게 6개 발생시키자
+        단, 숫자는 중복되면 안됨.(즉 로또번호 생성)
+        */
+    //함수정의:자바코들 자스코드로 변환
+    //1.랜덤하게 숫자 발생후 중복되지 않게 배열에 저장하는 메소드]
+    function setRandomNumber(random,start,end) {
+		for(var i=0; i < random.length;i++) {
+			while(true) {
+				//랜덤하게 숫자 발생 시키자
+				var randomNumber = parseInt(Math.random()*(end-start+1))+start;
+				//랜덤하게 발생시킨 숫자의 중복 여부체크를 위한 변수 선언	
+				var isDuplicated = false;
+				//랜덤하게 발생시킨 숫자(randomNumber)와 배열에 저장된 값의
+				//중복 여부 체크	
+				for(var k=0;k <=i-1;k++) {
+					if(randomNumber==random[k]) {//중복된 경우
+						isDuplicated=true;
+						break;
+					}
+				}/////////중복 체크용 for문				
+				if(!isDuplicated) {//중복되지 않는 경우
+					random[i]=randomNumber;
+					break;//while문 빠져 나가기
+				}				
+			    
+			}///while			
+		}////////////for
+		
+    }//////////////setRandomNumber
+    //함수 호출
+    var lotto=new Array(6);
+    setRandomNumber(lotto,1,45);
+    //lotto출력
+    lotto.forEach(function(item){
+        console.log(item);
+    });
+    </script>
+</head>
+<body>
+    <fieldset>
+        <legend>로또 발생기</legend>
+        <button onclick="showLottoNumber();">로또 발생</button>
+        <span id='lotto' style='font-size:2em;color:red;font-weight:bold;'></span> 
+    </fieldset>
+    <script>
+        var span = document.getElementById('lotto');
+        function showLottoNumber(){
+            lotto=new Array(6);
+            setRandomNumber(lotto,1,45);
+            var lottoNumber='';
+            lotto.forEach(function(item){
+                lottoNumber+=item+' &nbsp;';
+            });
+            span.innerHTML=lottoNumber;
+        }
+    </script>
+</body>
+</html>
