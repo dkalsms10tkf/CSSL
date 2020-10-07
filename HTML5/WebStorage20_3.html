@@ -132,14 +132,32 @@
             _span.innerHTML = '';
             //로컬 스토리지 초기화
             var l = localStorage.length;
+             // for(var i=localStrorage.length; i>=0; i--) {
             for(var i=0; i<l; i++) {
                 var key = localStorage.key(i);
-                console.log('저장되어있는key: '+ key);
-                if(key.substr(0,4) == 'MENU') {
-                    console.log('삭제할key: '+key);
+                if(key!=null && key.substr(0,4) == 'MENU') {
                     localStorage.removeItem(key);
                 }
             }
+            /* FOR IN문 사용하기
+            for(var key in localStorage) {
+                if(key.substr(0,4) == 'MENU') {
+                    console.log(key);
+                    localStorage.removeItem(key);
+                }
+            }*/
+
+            // FOR EACH문 - 배열에만
+            // [example]
+            var arr=[1,2,3,4,5];
+            arr.forEach((element,index,obj)=>{
+                console.log('%s : %s', element, index);
+                console.log(obj);
+            });
+            // FOR IN문 - 배열,객체에 사용
+            // for(var in obj) {} -> var에는 키값저장, 배열인 경우 인덱스 저장 / obj 는 배열 혹은 객체
+
+            
             //메뉴 표시용
             var checkboxes = document.getElementsByName('menu');
             for(var i=0; i<checkboxes.length; i++) {
