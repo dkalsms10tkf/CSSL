@@ -34,7 +34,80 @@
             //이때 this는 brace이다.
         }
         brace.printout();
+        brace.friend = function(name, age) {
+            console.log('%s의 친구이름은 %s이고 나이는 %d이다.', this.name,name,age);
+        };
+        brace.friend('철수',20);
+        console.log('%O',brace);
+        console.log(brace); //객체형태로 출력
+        console.log('%chello',style="background-color: red")
+        // JSON.stringify(json객체) : json형태의 문자열로 변환 단, 함수는 제외
+        var jsonToStr = JSON.stringify(brace);
+        console.log(jsonToStr);
         
+        //객체 생성
+        var brace2 = {
+            num1:10,
+            'num2':'20',
+            'add':function(){
+                return this.num1 + parseInt(this.num2); //this빠지면 에러
+            },
+            'minus':function() {
+                return this.num1 - this.num2;
+            }  
+        }; console.log('----------속성 접근-----------');
+        console.log(brace2.num1); console.log(brace2.num2);
+        console.log('----------함수 호출-----------');
+        console.log(brace2.add(), brace2.minus());
+
+        brace2.num3 = 30; // 객체 속성,함수 계속 추가 가능
+        //객체 속성 삭제 - 두가지방법
+        console.log(brace2);
+        //delete brace2.num3; //1]
+        delete brace2['num3']; //2]
+        console.log(brace2);
+        //생성자 함수
+        function Person(name, age) {
+            console.log(this); //이떄 this는 window
+            this.name = name; //여기 this는 new할때의 객체를 가리킴
+            this.age = age;
+            this.addr = '가산동'; //이때 this는 window객체
+        };
+        //Person('가길동', 30);// 일반함수처럼 호출한 경우
+        //->함수처럼 호출하면 this는 window 객체
+        var person1 = new Person('가길동', 30);
+        //->new로 호출하면 this는 Person객체를 가리킴
+        console.log('-------person1의 타입 및 값----------');
+        console.log(typeof person1);
+        console.log(person1); //json형태로 나옴
+        console.log('------json형태의 문자열로 변환--------');
+        console.log(JSON.stringify(person1));
+        //객체에 함수 추가방법
+        //생성자함수명.prototype.함수명 = function() {};
+        Person.prototype.printout = function() { //자바로 따지면 인스턴스형 메소드와 같음
+            console.log('이름:%s,나이:%s,주소:%s',this.name,this.age,this.addr);
+        };
+        person1.printout();
+        //클래스 메소드 : 자바의 정적메소드
+        //this키워드 사용x
+        //생성자함수명.함수명=function() {}
+        //생성자명.함수명으로 호출
+        Person.getPerson = function(args) { //args에는 Person 객체
+            console.log('이름:%s,나이:%s',args.name,args.age);
+        };
+        Person.getPerson(person1); //new해서 호출하는게 아니라, 클래스명으로 호출한다고 보면 된다.
+
+        var person2 = new Person('마길동',20);
+        person2.addr = '청담동';
+        person2.printout();
+        Person.getPerson(person2);
+
+        //instanceof 연산자 
+        var arr = new Array();
+        console.log('---------instacneof연산자-----------');
+        console.log(arr);
+        console.log(arr instanceof Array); // true
+        console.log(arr instanceof String); // false
     </script>
 </head>
 <body>

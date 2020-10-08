@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>String09.html</title>
+    <script>
+        var str1='안녕 자바스크립트';
+        var str2 = "hello javascript";
+        var str3 = "Hi JS";
+        var str4 = new String("Hi JS");
+        console.log('str3의 자료형:%s, 생성자타입:%s', typeof str3, str3 instanceof String); //string,false
+        console.log('str4의 자료형:%s, 생성자타입:%s', typeof str4, str4 instanceof String);//object,true
+        console.log(str3);
+        console.log(str4); // String {"Hi JS"}
+
+        console.log('str1의 길이:%s', str1.length);
+        console.log('str2의 길이:%s', str2.length);
+        console.log('str4의 길이:%s', str4.length);
+
+        // 문자열 꾸미기 함수
+        document.write('<h2>함수로 텍스트 효과 주기</h2>');
+        document.write('볼드체(함수로): ' + str1.bold() + '<br/>');
+        document.write('이탤릭(함수로): ' + str1.italics() + '<br/>');
+        document.write('볼드&이탤릭(함수로): ' + str1.bold().italics() + '<br/>');
+        document.write('가운데선긋기(함수로): ' + str1.strike() + '<br/>');
+        
+        var url="https://www.naver.com";
+        document.write('링크걸기(함수):' + str1.link(url) + '<br/>');
+        document.write('링크걸기(태그):' + '<a href=' + url + '>' + str1 + '</a><br/>');
+
+        //대소문자 변경
+        document.write('<h2> 대소문자 변경 </h2>');
+        document.write('대문자(함수):' + str2.toUpperCase() + '<br/>');
+
+        //특정 위치 하나 문자 얻어오기
+        document.write('<h2> charAt(n) </h2>');
+        document.write('J가져오기(함수): ' + str3.charAt(3) + '<br/>');
+        document.write('자바스크립트'.charAt(2));
+
+        //문자열에서 특정 문자열 얻어오기
+        document.write('<h2> substring(start,end) </h2>');
+        document.write('Academy'.substring(3,6)); //끝인덱스-1만큼 가져온다.
+        document.write('<h2> substr(start,개수) </h2>');
+        document.write('Academy'.substr(3,3));
+
+        //특정 위치의 아스키 코드값 가져오기
+        document.write('<h2>charCodeAt(index)</h2>');
+        document.write('Academy'.charCodeAt(0));
+
+        //아스키코드값을 문자로 --> 특이하게 클래스명으로 접근
+        document.write('<h2>String.fromCharCode(아스키코드값)</h2>');
+        document.write(String.fromCharCode(68));
+        /*
+            String객체는 문자 하나하나가 배열 형태로 저장된다.            
+            var str = "AB가C";
+            1]
+            var str = new Array(4);
+            str[0]="A" str[1]="B" ...
+            2]
+            var str = ["A", "B", "가", "C"];
+        */
+        document.write('<h2>문자열을 배열처럼</h2>');
+        for(var i=0; i<str3.length; i++) {
+            document.write(str3[i] +'<br>');
+        }
+
+        //문] 숫자아닌거 포함되어 있으면 return false
+        //javascript에서는 숫자 이외의 형식의 문자와 숫자 비교시 무조건 false
+        function isNumber(param) {
+            for(var i=0; i<param.length; i++) {
+                if(!(param[i] >= 0 && param[i] <=9)) {
+                    return false;
+                }
+            }
+            return true;            
+        }
+        console.log(isNumber("a"));
+
+        document.write('<h2>string[] split(구분자)</h2>');
+        var tel = "010-7471-5263";
+        var arr = tel.split('-');
+        document.write(arr);
+
+        document.write('<h2>string[] indexOf(찾는 문자열), lastIndexOf(찾는문자열)</h2>');
+        document.write('ACADEMY'.indexOf('CAD') + '<br>');
+        document.write('ACADEMY'.lastIndexOf('A') + '<br>');
+        
+        //문] 도메인만 출력하는 함수
+        document.write('도메인 출력하기<br>');
+        var email = ['kim@naver.com', 'park@cyworld.com', 'lee@nate.com'];
+        function getDomain(email) {
+            var domain;
+            for(var i=0; i<email.length; i++) {
+                var start = email[i].indexOf('@')+1;
+                var end = email[i].lastIndexOf('.');
+                domain = email[i].substring(start, end);
+                //domain = email[i].split('@');
+                document.write(domain+'<br>');
+            }
+        }
+        getDomain(email);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
