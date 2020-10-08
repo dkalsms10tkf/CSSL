@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geolocation22_1.html</title>
+    <style>
+        #display {
+            color: hotpink;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>Geolocation API - 현재 위치의 위도 경도 얻기</legend>
+        <span id='display'></span>
+    </fieldset>
+    <script>
+        console.log(navigator.geolocation);
+        var span = document.getElementById('display');
+        if(navigator.geolocation) {
+            span.innerHTML = 'Geolocation API를 지원하는 브라우저<br>';
+            //현재 위치 정보 한 번만 얻기
+            var options = {timeout:3000, maximumAge:5000};
+            function successCallback(pos) {
+                console.log('position의 자료형: ' + typeof pos);
+                console.log(pos);
+                var lat = pos.coords.latitude;
+                var lng = pos.coords.longitude;
+                span.innerHTML = '위도: ' + lat + ', 경도: ' + lng;
+            };
+            function errorCallback(err) {
+                switch(err.code){
+                    case 1: span.innerHTML = 'PERMISSION_DENIED'; break;
+                    case 2: span.innerHTML = 'POSITION_UNAVAILABLE'; break;
+                    case 3: span.innerHTML = 'TIMEOUT'; break;
+                    default: span.innerHTML = err.message;
+                }
+            };  
+            navigator.geolocation.getCurrentPosition(successCallback, errorCallback, options);
+            
+        }
+        else {
+            span.innerHTML = 'Geolocation API를 지원하지 않는 브라우저';
+        }
+    </script>
+</body>
+</html>

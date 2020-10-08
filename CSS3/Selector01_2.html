@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector01_2.html</title>
+    <style>
+        /* 전체선택자 * : 주로 글꼴, 여백 적용시 사용  */
+        * {
+            margin: 0;
+            font-family: Verdana;
+        }
+        /* 속성 선택자 */
+        h1[title] {
+            border: 1px red solid;
+        } /* 속성값은 ""이나 ''로 감싸지 않아도 된다. */
+        input[type=text] {
+            color: #ff0000;
+        }
+        input[type='password']{
+            background-color: mediumpurple;
+        }
+        /*속성에 정규표현식 적용*/ /*    *='ㅁ' ㅁ이 포함된값찾기 */
+        a[href*='na'] {
+            color: mediumvioletred;
+            font-size: 1.4em;
+        } /*  $='a' a로끝나는값찾기  */
+        a[href$='com'] {
+            background-color: olivedrab;
+        } /* ^='a' a로 시작하는값찾기   */
+        a[href^='http']{
+            border: 5px dotted blue;
+        }
+        /* aa~bb  aa태그와 같은수준의 bb태그 선택
+        (aa태그전에 사용된 bb태그 제외, aa태그 하위에 포함된 bb태그 제외) */
+        h3~div {
+            color: brown;
+        }
+        /* aa+bb  aa태그의 바로밑의 bb태그 하나만 선택*/
+        h3+div{
+            color: darkgreen;
+        }
+    </style>
+</head>
+<body>
+    <h1>title속성이 없는 h1태그</h1>
+    <h1 title="제목 태그입니다">title속성이 있는 h1태그</h1>
+    <form>
+        이름:<input type="text" /><br />
+        아이디:<input type="text" /><br />
+        비밀번호:<input type="password" /><br />
+        전화번호:<input type="tel" />
+    </form>
+    <h2>정규 표현식 사용</h2>
+    <a href="http://www.naver.com">네이버</a><br />
+    <a href="http://www.daum.net">다음</a><br />
+    <a href="www.nate.com">네이트</a>
+    
+    <div>div0</div>
+    <h3 id="title">동위(+,~) 선택자</h3>
+    <div>div1</div>
+    <div>div2</div>
+    <fieldset>
+        <div>div3</div>
+    </fieldset>
+    <div>div4</div>
+    <div>div5</div>
+</body>
+</html>

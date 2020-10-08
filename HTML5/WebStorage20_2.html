@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebStorage20_2.html</title>
+    <style>
+        #display {
+            color: darkblue;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <fieldset>
+        <legend>웹스토리지를 이용한 방문자 회원수 카운팅(세션 스토리지)</legend>
+        <span id="display" ></span>
+        <button onclick="removeStorage();">세션 스토리지 삭제</button>
+
+        <script>
+            console.log(typeof(Storage) != undefined) //웹스토리지 지원하면 true 반환
+            var span;
+            if(typeof(Storage) != undefined){
+                span = document.getElementById('display');
+                span.innerHTML = '웹 스토리지를 지원하는 브라우저입니다.';
+                console.log('자료형:%s, 로컬스토리지:%O', typeof(sessionStorage), sessionStorage);
+                //로컬스토리지에 저장한 방문횟수읽기
+                var counter = sessionStorage.getItem('counter');
+                console.log(counter);
+                if(counter === null) { //사용자가 한번도 방문한적 없을때
+                    //방문횟수 1로 초기화
+                    sessionStorage.setItem('counter',1);
+                    span.innerHTML = '처음 방문하셨군요!';
+                } else { //재방문
+                    counter++;
+                    span.innerHTML = counter + '번째 방문하셨습니다.';
+                    sessionStorage.counter = counter;
+                }   
+            }
+            function removeStorage() {
+                span.innerHTML = "방문횟수가 초기화 되었습니다.";
+                sessionStorage.removeItem('counter');
+            }
+        </script>
+    </fieldset>
+</body>
+</html>

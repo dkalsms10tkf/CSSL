@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selector01_3.html</title>
+    <style>
+        * {
+            margin: 0;
+            font-family: Verdana;
+        }
+        #content {
+            background-color: darkorange;
+            width: 300px;
+        }
+        ul li {
+            list-style: none;
+            border: 1px solid royalblue;
+            font-size: 1.4em;
+            font-weight: bold;
+            height: 50px;
+
+        }
+        /* 구조선택자 : */
+        /* n은 0부터 1씩 증가함 */
+        div#content li:nth-child(2n+1){ 
+            background-color: sandybrown;
+        }
+        /* nth-child(2n)함수가 first-child,last-child등 속성보다 우선순위가 높다 */
+        #content li:nth-child(2n){ 
+            background-color: darkcyan;
+        }
+        ul li:last-child{
+            background-color: darkgrey;
+        }
+        #content ul li:first-child{
+            border-radius: 10px 10px 0 0;
+            /* left-top rigth-top right-bottom left-bottom */
+        }
+        #content ul li:last-child{
+            border-radius: 0 0 10px 10px;
+        }
+        /* 문자선택자 */
+        #start::first-letter, #end::first-letter {
+            font-size: 1.8em;
+        }
+        #start::first-line, #end::first-line {
+            color: blueviolet;
+            font-weight: bold;
+        }
+        #charcter p:first-child::selection {
+            /*  selection : 드래그 */
+            color: chartreuse;
+            background-color: black;
+        }
+        li:nth-child(2) {
+            color: chartreuse;
+        }
+    </style>
+</head>
+<body>
+    <h1>구조 선택자</h1>
+    <div id="content">
+        <ul>
+            <li>menu1</li>
+            <li>menu2</li>
+            <li>menu3</li>
+            <li>menu4</li>
+            <li>menu5</li>
+            <li>menu6</li>
+        </ul>
+    </div>
+    <h1>문자 선택자</h1>
+    <div id="charcter">
+        <p id="start">
+            2020년 1월 6일<br />
+            6기 시작
+        </p>
+        <p id="end">
+            2020년 7월 24일<br />
+            6기 종료
+        </p>
+    </div>
+    <div>
+        <ul>
+            <li>menu1</li>
+            <li>menu2</li>
+            <li>menu3</li>
+            <li>menu4</li>
+            <li>menu5</li>
+            <li>menu6</li>
+        </ul>
+    </div>
+</body>
+
+</html>
