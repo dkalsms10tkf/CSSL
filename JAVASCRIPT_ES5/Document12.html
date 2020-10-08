@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document12.html</title>
+    <script>
+        // DOM 객체 얻어오기
+        /*
+            1. 태그명으로 getElementsByTagName('태그명')
+            2. name속성으로 getElementsByName('태그 속성')
+            3. 클래스명으로 getElementsByClassName('클래스명')
+            4. id값으로 getElementById('id명')
+        */
+        function fnGetElementsByTag(){
+            //모든 input태그를 컬렉션(HTMLCollections)에 담아서 반환한다.
+            var inputs = document.getElementsByTagName('input');
+            console.log('%O',inputs);
+            console.log(inputs.length);
+            console.log(inputs.item(0).value);
+            console.log(inputs[0].value); //item함수랑 배열이랑 똑같이 쓴다.
+                                            // 그렇다고 배열은 아님 for each문 적용x
+            // namedItem은 name이 여러개일 경우 첫번째 value만 반환한다.
+            console.log(inputs.namedItem('inter').value);
+            console.log(inputs.namedItem('txt').value);
+            /*inputs.forEach((item)=>{
+                console.log(item);
+            })*/ //forEach문 에러남
+            //HTMLCollection에 forEach문 쓰는 방법
+            /*HTMLCollection.prototype.forEach = Array.prototype.forEach;
+            console.log('[HTMLCollection에 추가한 forEach문으로 요소출력]')
+            inputs.forEach((item)=>{
+                console.log(item.value);
+            });*/
+            var checkString = '', textString;
+            for(var i=0; i<inputs.length;i++) {
+                if(inputs[i].type == 'checkbox' && inputs[i].checked == true) {
+                    checkString+=codeToText(inputs[i].value)+' ';
+                }
+                if(inputs[i].type=='text' && inputs[i].name=='txt'){
+                    textString = inputs[i].value;
+                }
+            }
+            console.log('체크된 값: ' + checkString);
+            console.log('입력한 값: ' + textString);
+
+        };
+        //코드값을 일반 텍스트로 변환하는 함수
+        var codeToText = function (code) {
+            switch(code) {
+                case 'POL': return '정치';
+                case 'ECO': return '경제';
+                default: return '연예';
+            }
+        };
+        function fnGetElementsByName() {
+            //NodeList
+            var names = document.getElementsByName('inter');
+            console.log(typeof names);
+            console.log('%O', names);
+            console.log(names.item(0).value);
+            //체크박스 체크 토글시키는 부분
+            names.forEach((item)=>{
+                if(item.checked) item.checked = false;
+                else item.checked = true;
+            })
+        };
+        function fnGetDomain(){
+            var aTag = document.getElementsByTagName('a');
+            
+            HTMLCollection.prototype.forEach = Array.prototype.forEach;
+            aTag.forEach((item)=>{
+                if(item.href.indexOf('www')!=-1)
+                    console.log(item.href);
+            });
+        }
+        function fnGetElementsClass(){
+            //HTMLCollection
+            var portals = document.getElementsByClassName('portal');
+            console.log('%O', portals);
+            HTMLCollection.prototype.forEach = Array.prototype.forEach;
+            portals.forEach((node)=>{
+                console.log(node.innerHTML); //시작태그와 종료태그 사이의 값 얻어올때
+                                            //.innerHTML 사용
+            })
+        }
+        function fnChangeImage(num){
+            var img = document.getElementById('image');
+            img.src = '../IMGS/' + num + '.jpg';
+        }
+        function fnCopy() {
+            var first = document.getElementById('src').value;
+            var srcTxt1 = document.getElementById('srcTxt1').value;
+            var srcTxt2 = document.getElementById('srcTxt2').value;
+            var dest = document.getElementById('dest');
+            var destTxt1 = document.getElementById('destTxt1');
+            var destTxt2 = document.getElementById('destTxt2');
+            dest.value = first;
+            destTxt1.value = srcTxt1;
+            destTxt2.value = srcTxt2;
+        }
+// document.querySelectorAll() 써보기
+    </script>
+</head>
+<body>
+    <h2>태그명으로 얻기</h2>
+    <input type="checkbox" name="inter" value="POL" />정치
+    <input type="checkbox" name="inter" value="ECO" />경제
+    <input type="checkbox" name="inter" value="ENT" checked />연예
+    <input type="text" name="txt" />
+    <input type="button" value="태그명으로 DOM객체 얻기" onclick="fnGetElementsByTag()" />
+    <h2>이름으로 얻기</h2>
+    <input type="button" value="NAME속성에 지정한 값으로 DOM객체 얻기" onclick="fnGetElementsByName()" />
+    <h2>태그명으로 객체 얻기2</h2>
+    <ul>
+        <li><a href="http://www.naver.com">네이버</a></li>
+        <li><a href="http://www.daum.net">다음</a></li>
+        <li><a href="http://www.nate.com">네이트</a></li>
+    </ul>
+    <button onclick="fnGetDomain()">도메인 얻어오기</button>
+    <h2>클래스명으로 객체 얻기</h2>
+    <ul>
+        <li><a href="#" class="portal">네이버</a></li>
+        <li><a href="#" class="portal">다음</a></li>
+        <li><a href="#" class="portal">네이트</a></li>
+    </ul>
+    <button onclick="fnGetElementsClass()">클래스명으로 DOM객체 얻어오기</button>
+    <h3>동적으로 이미지 교체(ID로 DOM객체 얻기)</h3>
+    <fieldset>
+        <legend>이미지 교체</legend>
+        <a href="javascript:fnChangeImage(1)">1번 이미지</a>
+        <a href="javascript:fnChangeImage(2)">2번 이미지</a>
+        <a href="javascript:fnChangeImage(3)">3번 이미지</a>
+        <a href="javascript:fnChangeImage(4)">4번 이미지</a>
+        <hr />
+        <img id="image" src="#" alt="이미지교체" style="width:350px;height:200px" />
+    </fieldset>
+    <fieldset>
+        <legend>전화번호 복사</legend>
+        <select id="src">
+            <option value="010">010</option>
+            <option value="011">011</option>
+            <option value="017">017</option>
+            <option value="019">019</option>
+        </select>
+        -
+        <input type="text" size="4" maxlength="4" id="srcTxt1" />
+        -
+        <input type="text" size="4" maxlength="4" id="srcTxt2" />
+        <br />
+        <input type="button" value="복사" onclick="fnCopy()" />
+        <br />
+        <select id="dest">
+            <option value="010">010</option>
+            <option value="011">011</option>
+            <option value="017">017</option>
+            <option value="019">019</option>
+        </select>
+        -
+        <input type="text" size="4" maxlength="4" id="destTxt1" />
+        -
+        <input type="text" size="4" maxlength="4" id="destTxt2" />
+    </fieldset>
+</body>
+</html>
