@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Background05.html</title>
+    <style>
+        #div div {
+            background-color: thistle;
+            width: 80%;
+            height: 400px;
+            background-image: url(../IMGS/thumnail.jpg);
+            background-repeat: no-repeat;
+        }
+        #div div:first-child {
+            border: 5px solid slategray;
+            /* css3에서 들어옴 */
+            background-size: 100% 100%; 
+        }
+        #div div:last-child {
+            border: 5px solid slateblue;
+            background-size: 30% 100%;
+        }
+    </style>
+</head>
+<body>
+    <h2>배경관련 CSS속성</h2>
+    <div>
+        <h2>배경색 지정</h2>
+        <div style="background-color: violet;">블락 엘리먼트</div>
+        <span style="background-color: turquoise;">인라인 엘리먼트</span>
+        <h2>배경 이미지 지정</h2>
+        <!-- 배경색 과 배경이미지 동시에 주면 최종적으로 배경이미지가 적용됨
+        이미지의 가로 세로 위치는 반복속성이 no-repeat일때 의미 있다.
+        다시 말해서 repeat-x일때는 x좌표는 의미 없고 repeat-y일때는 y좌표는 의미 없다. -->
+        <div style="background-color: tomato; width: 500px; height: 500px; background-image: url('../IMGS/thumnail.jpg'); background-repeat: no-repeat; background-position: 50% 50%;">
+            다이브 입니다.
+        </div>
+        <div id="div">
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</body>
+
+</html>

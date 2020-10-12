@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Border06_3.html</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+            border: 10px solid midnightblue;
+            padding: 10px;
+        }
+        div:nth-child(2) {
+            background-color: mediumturquoise;
+            /* border와 padding의 크기도 영역 크기에 포함된다. */
+            border: none;
+            padding: 0;
+        }
+        div:nth-child(3) {
+            background-color: mediumslateblue;
+            /* 레이아웃 설계시 테두리 줄 때 아래도 함께... */
+            box-sizing: border-box;
+        }
+        div:nth-child(4) {
+            background-color: mediumseagreen;
+            /* 영역 밖에 테두리를 그려줌 */
+            box-sizing: content-box;
+        }
+    </style>
+</head>
+<body>
+    <h2>box-sizing 속성</h2>
+    <div>가로 세로 200px</div>
+    <div>가로 세로 200px</div>
+    <div>가로 세로 200px</div>
+
+</body>
+</html>

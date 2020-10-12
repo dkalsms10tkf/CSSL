@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MarginPadding07.html</title>
+    <style>
+       #block_each {
+            border: 1px solid mediumslateblue;
+            padding-top: 20px;
+            padding-left: 40px;
+            padding-bottom: 80px;
+            padding-right: 300px;
+            /* 창을 아무리 줄여도 위에 설정한 padding값은 유지되고, 컨텐츠가 그에 맞춰 바뀐다. */
+        }
+        #block_simul {
+            border: 1px solid mediumorchid;
+            padding: 40;
+        }
+        div > span {
+            border: 1px solid mediumblue;
+            padding-top: 20px; padding-bottom: 40px; padding-right: 80px; padding-left: 100px;
+            /*  inline element는 padding-left만 의미가 있는듯... */
+        }
+        #first_field {
+            /* padding-top: 50px; */
+        }
+        #first_field div:nth-child(2) {
+            border: solid 1px maroon;
+            /* margin-top: 50px;  부모에 padding 주는거랑 똑같음*/ 
+            margin-bottom: 50px;
+            margin-right: 100px;
+        }
+        #first_field div:nth-child(3) {
+            border: solid 1px magenta;
+            margin-top: 30px;
+        }
+        #second_field div:nth-child(2) {
+            border: solid 1px maroon;
+            
+            /*margin-bottom: 50px;*/
+        }
+        #second_field span:nth-child(3) {
+            border: solid 1px magenta;
+            /* inline element는 가로배치이기 때문에 margin-top,bottom 적용 안 된다. */
+            margin-top: 50px;
+            margin-right: 5000px;
+            margin-left: 50px;
+            margin-bottom: 500px;
+        }
+        #third {
+            padding-top: 100px;
+        }
+        #third span:nth-child(2) {
+            border: solid 1px maroon;
+            margin-right: 50px;
+            
+        }
+        #third span:nth-child(3) {
+            border: solid 1px magenta;
+            margin-left: 40px;
+        }
+        #text {
+            border: 1px solid limegreen;
+            width: 200px;
+            height: 200px;
+            text-align: center;
+            line-height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <h2>여백 관련 속성</h2>
+    <div>
+        <h3>padding</h3>
+        <div id='block_each'>상하좌우 여백 각각 지정(블락엘리먼트)</div>
+        <div id='block_simul'>상하좌우 여백 동시 지정(블락엘리먼트)</div>
+        <!-- 왼쪽 여백을 줄때만 컨텐츠가 오른쪽으로 움직인다.
+        그외 (위/아래/오른쪽)는 텍스트는 그대로 있고 영역이 늘어난다-->
+        <span>인라인 엘리먼트</span>
+        <h3>marign</h3>
+        <fieldset id='first_field'>
+            <legend>block과 block</legend>
+            <!--
+            block1과 block2는 서로 margin-top 및 margin-bottom이 적용되고
+            (상하로 배치)
+            block1과 block2에 margin-left 와 margin-right는 부모 영역과의 여백이다.
+            그래서 margin-left 와 margin-right를 주면 영역의 가로폭이 줄어 든다.
+            -->
+            <div>block1</div>
+            <div>block2</div>
+        </fieldset>
+        <fieldset id='second_field'>
+            <legend>block과 inline</legend>
+            <!-- block 에 마진을 주자-->
+            <div>block</div>
+            <!-- 인라인도 margin-left는 부모영역과의 여백이다 -->
+            <span>inline</span>
+        </fieldset>
+        <fieldset id='third'>
+            <legend>inline과 inline</legend>
+            <!--
+            인라인 인 경우 margin-top 및 margin-bottom은 부모와 여백을 의미하지만 적용이 안된다.
+            이때는 부모에서 padding으로 적용한다
+            -->
+            <span>inline1</span>
+            <span>inline2</span>
+        </fieldset>
+        <fieldset>
+            <legend>텍스트 정렬</legend>
+            <!--
+            수평정렬:text-align:center
+            수직정렬 height와 line-height값을 동일하게
+            -->
+            <div id='text'>텍스트 정렬</div>
+        </fieldset>
+    </div>
+</body>
+</html>
