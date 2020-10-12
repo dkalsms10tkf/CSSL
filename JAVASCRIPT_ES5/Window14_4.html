@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window14_4.html</title>
+    <script>
+        /*
+            escape() 2바이트로 표현하는 언어들 UTF-8형식으로 인코딩
+                숫자,영문자 제외
+                빈공백은 %20으로 인코딩 처리됨
+                Ajax나 jQuery Ajax에서 한글 처리시 주로 사용
+            unescape(): UTF-8형식으로 인코딩된 값을 디코딩
+        */
+        var escapeString = '안녕 가! HELLO 123456780';
+        console.log(escape(escapeString));
+        //%uC548%uB155%20%uAC00%21%20HELLO%20123456780
+        console.log(unescape('%uC548%uB155%20%uAC00%21%20HELLO%20123456780'));
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window14_3.html</title>
+    <script>
+        /*
+            var 객체 = setTimeout(" 함수명()"or무명함수, 1000분의 1초단위)
+            : timer객체 반환
+            : 특정시간 지난 후 어떤 함수를 한 번만 실행시키고자 할 때 사용하는 메소드
+            : clearTimeout(timer객체)호출
+            var 변수 = setInterval(" 함수명()" or 무명함수, 1000분의 1초단위)
+            : 매개변수에 주어진 시간이 되면 해당 함수 계속 호출됨
+            : clearInterval(timer변수)
+        */
+        var timeOne, timeContinue, counter=0;
+        function fnCallAfter(ch) {
+            if(ch == 'T') {
+                //timeOne = setTimeout(()=>{console.log('5초후한번실행')}, 5000);
+                timeOne = setTimeout(fnOnce, 5000);
+                //timeOne = setTimeout("fnOnce()", 5000);
+            }
+            else {
+                timeContinue = setInterval(()=>{console.log('3초마다한번씩'+ ++counter +'번째')},3000);
+            }
+
+        };
+        function fnOnce(){
+            console.log('5초에 한번');
+        }
+        function fnCallBreak(num) {
+            if(num == 1){
+                clearTimeout(timeOne);
+            }
+            else {
+                clearInterval(timeContinue);
+            }
+        };
+        window.addEventListener('load',function(){
+            setInterval(()=>{
+                var span = document.getElementById('clock');
+                var today = new Date();
+                var str = today.getHours() + '시' + today.getMinutes() + '분' + today.getSeconds() + '초';
+                span.innerHTML = str;
+            },1000);
+        });
+    </script>
+</head>
+<body>
+    <fieldset>
+        <legend>타이머</legend>
+        <h4>일정 시간후 함수 실행</h4>
+        <input type="button" value="5초후 함수 실행" onclick='fnCallAfter("T");' />
+        <input type="button" value="함수 호출 중지" onclick="fnCallBreak(1);" />
+        <h4>일정시간마다 함수실행</h4>
+        <input type="button" value="3초마다 함수 실행" onclick="fnCallAfter('I');" />
+        <input type="button" value="함수 호출 중지" onclick="fnCallBreak(2);" />
+        <h4>시분초 표시</h4>
+        <span id="clock" style="color:Green;font-size:1.8em;font-weight:bold"></span>
+    </fieldset>
+</body>
+</html>
