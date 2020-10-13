@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.outer {
+            width: 200px;
+            height: 200px;
+            background-color: blueviolet;
+        }
+        div.middle {
+            width: 100px;
+            height: 100px;
+            background-color: aqua;
+        }
+        div.inner {
+            width: 50px;
+            height: 50px;
+            background-color: brown;
+        }
+    </style>
+    <script>
+        // 이벤트 버블: 하위->상위
+        // 이벤트 캡쳐: 상위->하위
+        // 이벤트 위임: 하위 요소에 각각 이벤트를 붙이지 않고,
+        //             상위 요소에서 하위 요소의 이벤트들을 제어하는 방식
+        window.onload = () =>{
+            //var divs = document.getElementsByTagName('div'); //HTMLCollection
+            var divs = document.querySelectorAll('div'); //NodeList
+            divs.forEach((div)=>{
+                div.addEventListener('click', logEvent, {
+                    //capture: true // 최상위부터 출력
+                    //default는 false이고 생략 가능
+                    //default는 하위->상위
+                });
+            });
+            //모든 아이템에 클릭 이벤트 추가
+            /*var inputs = document.querySelectorAll('input');
+            inputs.forEach((input)=>{
+                input.addEventListener('click',(event)=>{
+                    alert('clicked');
+                });
+            });*/
+            //input의 상위 요소에 리스너 달기
+            //상위 요소에 리스너를 넣고 하위에서 발생한 클릭 이벤트를 감지하는 것이
+            //이벤트 버블링~
+            var itemList = document.querySelector('.list');
+            itemList.addEventListener('click', (event) => {
+                var a = event.target.closest("input");
+                console.log(event.target.closest("input"));
+                if(a==null){
+                    return false;
+                }
+                alert('clicked!');
+            });
+            
+            //리스트에 새 아이템 추가
+            var list = document.querySelector('.list');
+            var li = document.createElement('li');
+            var input = document.createElement('input');
+            var label = document.createElement('label');
+            var labelText = document.createTextNode(' 이벤트 위임 학습');
+            input.setAttribute('type','checkbox');
+            input.setAttribute('id','item3');
+            label.setAttribute('for', 'item3');
+            label.appendChild(labelText);
+            li.appendChild(input);
+            li.appendChild(label);
+            list.appendChild(li);
+            //////////////////////////////////////////////////////////
+            //새로 추가한 리스트 아이템에는 클릭 이벤트 리스너가 동작하지 않음.
+            
+        };
+        function logEvent(event) {
+            //console.log(event);
+            //event.stopPropagation(); // 이벤트가 전파되는 것을 막는다.
+            //캡쳐때 쓰면 최상위 이벤트만 동작
+            //버블때 쓰면 해당 요소 이벤트만 동작
+            console.log(event.target); // 처음 눌렀던 이벤트!
+            //console.log(event.currentTarget); // 선택된 tag
+            //console.log(event.currentTarget.className);
+            
+        }
+        // 브라우저는 특정 화면 요소에서 이벤트가 발생했을 때
+        // 그 이벤트를 최상위에 있는 화면 요소까지 이벤트를 전파시킵니다.
+    </script>
+</head>
+<body>
+    <div class='outer'>
+        <div class='middle'>
+            <div class='inner'></div>
+        </div>
+    </div>
+    <h1>오늘의 할 일</h1>
+    <ul class='list'>
+        <li>
+            <input type="checkbox" id="item1">
+            <label for="item1">이벤트 버블링 학습</label>
+        </li>
+        <li>
+            <input type="checkbox" id="item2">
+            <label for="item2">이벤트 캡쳐 학습</label>
+        </li>
+    </ul>
+</body>
+</html>
+<!-- event 속성
+    * event.currentTarget : 이벤트 대상 객체
+    * event.target : 이벤트가 처음 발생했던 대상 객체
+-->

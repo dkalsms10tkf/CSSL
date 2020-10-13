@@ -16,6 +16,39 @@
         console.log(escape(escapeString));
         //%uC548%uB155%20%uAC00%21%20HELLO%20123456780
         console.log(unescape('%uC548%uB155%20%uAC00%21%20HELLO%20123456780'));
+        //document.write("<script>alert('메시지대화상자');<\/script>");
+        //eval('문자열') ->함수도 가능, eval 사용하지 마라~~~~~~~~~~~~~~~
+        // 매개변수에 있는 값을 js code로 해석
+        // (json형식 데이터 처리하거나, 문자열을 특정 DOM객체로 처리시)
+        //eval("alert('메시지 대화상자');");
+        var str = '{"name":"홍길동", "age":20}';
+        //문자열 전체를 ''로 감싸고, key, value는 ""로 감싼다.
+        console.log('%O',str);
+        var strObj = eval("("+"{'name':'홍길동', 'age':'20'}"+")");
+        var obj2 = eval('('+str+')');
+        console.log('%O',strObj);
+        console.log(strObj.name);
+        //JSON.parse('JSON형식의 문자열') : 문자열을 json객체로 변환해서 반환
+        var json = JSON.parse(str);
+        console.log(json.age);
+        // isNaN() : is not a number? 숫자아니면 true
+        console.log(isNaN('11A')?'숫자가 아니다':'숫자다');
+        // parseInt(): 숫자부분만 반환하고 숫자 아니면 NaN 반환
+        console.log(parseInt('1001aaa')); // 1001
+        console.log(parseInt('1a0')); //1
+        console.log(parseInt('a')); //NaN
+        /*
+            encodeURI() / decodeURI() : 특수문자 인코딩 X
+            encodeURIComponent() / decodeURIComponent() : 알파벳,숫자 제외 인코딩
+            escape() / unescape() : 알파벳,숫자,@*-_+./ 제외 인코딩 문자도 인코딩 ?
+        */
+        var query = 'name=가길동,age=20';
+        console.log(encodeURI(query)); //특수문자x
+        //name=%EA%B0%80%EA%B8%B8%EB%8F%99,age=20
+        console.log(encodeURIComponent(query));
+        //name%3D%EA%B0%80%EA%B8%B8%EB%8F%99%2Cage%3D20
+        console.log(escape(query));
+        //name%3D%uAC00%uAE38%uB3D9%2Cage%3D20
     </script>
 </head>
 <body>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSSControl16.html</title>
+    <script>
+        /*
+            객체.style.CSS속성 = "값";
+            단, background-color => backgroundColor
+            background-img = url('경로') => backgroundImage = "url('이미지경로')"
+        */
+        var span;
+        window.onload = function () {
+            span = document.getElementById('span');
+        };
+        function setFont(){
+            span.style.fontSize = "1.2em";
+            span.style.fontFamily = 'Franklin Gothic Medium';
+            span.style.color = 'red';
+        };
+    </script>
+</head>
+<body>
+    <h2 style="color:red">자바스크립트로 CSS제어하기</h2>
+    <span id="span">SPAN태그</span>
+    <input type="button" value="글꼴바꾸기" onclick="setFont()" />
+    <fieldset>
+        <legend>신문기사</legend>
+        <button onclick="fnArticle('+')">+</button>
+        <button onclick="fnArticle('-')">-</button>
+        <button onclick="fnArticle('R')">Red</button>
+        <button onclick="fnArticle('G')">Green</button>
+        <button onclick="fnArticle('B')">Blue</button>
+        <button onclick="fnArticle('')">Black</button>
+        <button onclick="fnArticle('BO')">볼드체</button>
+        <button onclick="fnArticle('NO')">보통</button>
+        <p style="font-size:10px;" id="article">
+            박 대통령은 이날 청와대에서 열린 대통령 주재 수석비서관회의에<br />
+            참석해 이 같이 밝히며 “각 수석들은 국민을 대신해 일하고<br />
+            있는 분들인 만큼, 국민을 위해서 잘못된 그 어떤 것들에도<br />
+            결코 굴복하거나 용인하지 않겠다는 강한 의지를 가지고<br />
+            일해주길 바란다”고 당부했다.<br />
+        </p>
+    </fieldset>
+    <select  multiple size='5'  name="A" id="sel" onchange=fnSelect(this)>
+        <option value="">알파벳 선택</option>
+        <option value="a">apple</option>
+        <option value="b">beer</option>
+        <option value="c">cider</option>
+        <option value="d">door</option>
+    </select>
+    <script>
+        function fnSelect(obj) { // obj = select태그 객체
+            /*  단일선택  */
+            //선택자 value 얻어오기
+            console.log(obj.value);
+            //선택자 text 얻어오기
+            //console.log(obj[obj.selectedIndex].text);
+            console.log(obj[obj.selectedIndex].innerHTML);
+            /*  다중선택  */
+            
+        }
+        var p = document.getElementById('article');
+        function fnArticle(c) {
+            var size = parseInt(p.style.fontSize);
+            switch(c) {
+                case '+': 
+                    if(size >= 20) size = 20;
+                    else size += 2;
+                    p.style.fontSize = size+"px"; break;
+                case '-':
+                    if(size <= 4) size = 4;
+                    else size -= 2;
+                    p.style.fontSize = size+"px"; break;
+                case 'R':p.style.color = "red"; break;
+                case 'G':p.style.color = "green"; break;
+                case 'B':p.style.color = "blue"; break;
+                case '':p.style.color = "black"; break;
+                case 'BO':p.style.fontWeight = "bold"; break;
+                default: p.style.fontWeight = "normal";
+            }
+        }
+    </script>
+</body>
+</html>
