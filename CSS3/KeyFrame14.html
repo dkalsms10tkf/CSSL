@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KeyFrame14.html</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #rect {
+            width: 100px;
+            height: 100px;background-color: rebeccapurple;
+            animation-duration: 3s;
+            /* keyframe규칙 이용하기 위해선 이름 지정 필수 */
+            animation-name: myani1;
+        }
+        /* @이 붙은 건 규칙이다. */
+        @keyframes myani1{
+            /* from 생략가능 */
+            to {
+                width: 400px;
+                height: 400px;
+                background-color: salmon;
+            }
+        }
+        #circle1 {
+            width: 100px;
+            height: 100px;
+            background-color: royalblue;
+            line-height: 100px;
+            text-align: center;
+            position: absolute;
+            left: 0; 
+            top: 100px;
+            animation-duration: 3s;
+            animation-name: myani2;
+        }
+        @keyframes myani2 {
+            to {
+                width: 400px;
+                height: 200px;
+                line-height: 200px;
+                border-radius: 100px;
+                transform: rotate(360deg);
+            }
+        }
+        #circle2 {
+            width: 100px;
+            height: 100px;
+            background-color: skyblue;
+            position: absolute;
+            left:0px;
+            top: 200px;
+            animation-duration: 3s;
+            animation-name: myani3;
+            animation-iteration-count: infinite;
+        }
+        @keyframes myani3 {
+            to {
+                left: 400px;
+                top: 600px;
+            }
+        }
+        #circle2:hover {
+            animation-play-state: paused;
+        }
+    </style>
+</head>
+<body>
+    <div id='wrap'>
+        <div id='rect'></div>
+        <div id='circle1'>CIRCLE</div>
+        <div id='circle2'></div>
+    </div>
+</body>
+</html>

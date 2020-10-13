@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImportMedia15.html</title>
+    <!-- <link rel="stylesheet" href="../Styles/import.css"> -->
+    <style>
+        /* improt 규칙
+            외부 css파일 연길 시 반드시 style 태그 최상단에... */
+        @import url(../Styles/import.css);
+        .content {
+            color: slategrey;
+        }
+        /* Media 규칙 */
+        @media screen {
+            .content{
+                color: tomato;
+            }
+        }
+        @media print{
+            .content {
+                background-color: white;
+                color: black;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class='content'>
+        <p>
+            LG유플러스(대표 하현회)는 볼트테크코리아와 언제 어디서나 휴대폰을 교체할 수 있는 신개념 부가서비스 ‘맘대로 폰교체’를 오는 16일 출시한다고 밝혔다.
+맘대로 폰교체는 U+모바일 가입자가 원하면 2년간 최대 2회 교체 받을 수 있는 서비스다.
+단말 파손 여부, 제조사와 OS에 상관없이 교체할 수 있다. 개통 1년 내에도 가입이 가능하고 서울에선 6시간 내에 방문 교체도 이뤄진다.
+휴대폰 렌탈이나 동일 제조사의 새 스마트폰으로 바꾸면서 중고가격을 보상하는 서비스와 달리 원하는 단말을 직접 고를 수 있다는 점이 눈에 띈다.
+처음 개통한 단말기의 출고가에 따라 2천490원에서 6천490원의 월 이용료를 내고, 서비스 가입시점 출고가의 12%를 교체수수료로 지불하면 원하는 휴대폰으로 바꿀 수 있다.
+스마트폰 뿐만 아니라 태블릿, 스마트워치 등 세컨드 디바이스도 가입할 수 있다. 출시한 지 1년 내의 모든 자급제폰도 서비스 이용 대상에 포함된다. 폴드형 스마트폰은 가입을 할 수 없다.
+개통 후 60일까지만 가입 가능했던 휴대폰 분실 파손 보험과는 달리 개통 후 1년 내에도 서비스에 가입할 수 있다. 맘대로 폰교체 홈페이지에서 AI기반 원격진단을 통해 휴대폰의 상태를 점검하는 기능을 활용해 언택트 가입이 가능해졌다.
+휴대폰이 파손된 경우 서비스 센터를 방문하거나 보험 처리를 위해 서류를 제출할 필요 없이 신청만으로 교체를 받을 수 있게 됐다.
+        </p>
+    </div>
+</body>
+</html>

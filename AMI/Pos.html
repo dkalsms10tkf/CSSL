@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .parent {
+            border: 2px solid blue;
+            color: blue;
+            background: khaki;
+            padding: 1rem;
+        }
+        .child {
+            border: 2px dotted red;
+            color: red;
+            background: lightcoral;
+            padding: 1rem;
+        }
+        .abs {
+            position: absolute; /*  */
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent" style="position: relative;">
+        Parent
+        <div class="child">
+          Child #1
+        </div>
+        <div class="child abs">
+          Child #2
+        </div>
+      </div>
+</body>
+</html>
