@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InnerXXXX20.html</title>
+    <script>
+        /*
+            시작태그와 종료태그가 있는 모든 태그들은 innerHTML, innerText 속성이 있음
+            <input><br><img>제외
+
+            innerHTML은 HTML태그를 해석해주는 반면
+            innerText는 텍스트 그대로 출력해준다.
+        */
+        function fnWrite(flag) {
+            var span = document.getElementById('span');
+            if(flag == 'H'){
+                span.innerHTML = '<strong>' + span.innerHTML + '</strong>';
+            }
+            else {
+                span.innerText = '<strong>' + span.innerText + '</strong>';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2 id="h2">inner계열 속성 얻기</h2>
+    <input type="button" value="시작태그와 종료태그사이에 있는값 얻기" onclick="alert(document.getElementById('h2').innerHTML);" />
+    <input type="button" value="innerHTML" onclick="fnWrite('H')" />
+    <input type="button" value="innerText" onclick="fnWrite('T')" />
+    <span id="span">텍스트</span>
+</body>
+</html>

@@ -18,6 +18,17 @@
             - click : 사용자가 해당 태그 영역 클릭했을 때 발생하는 이벤트
             - select : select태그에서 선택을 바꿀 때마다 발생하는 이벤트
 
+            * 키보드 이벤트(input type='text', 'password' ... )
+            - keydown : 모든 키보드 누를 때
+            - keyup : 키보드에서 손 뗄 때
+            - keypress : 문자 관련된 키보드 누를 때(firefox는 적용X)
+
+            * 마우스 이벤트
+            - mousedown : 클릭
+            - mouseup : 마우스 땠을 때
+            - mouseover : 태그 영역에 마우스 들어왔을 때
+            - mouseout : 태그 영역에서 마우스가 나갔을 때
+            
             * 이벤트 취소
             리스너에 false 리턴하면 해당이벤트 취소됨            
         */
